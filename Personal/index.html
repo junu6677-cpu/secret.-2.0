@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Zunera 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(to bottom,#0d1b2a,#1b263b,#415a77);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* Moon */
+.moon{
+    position:fixed;
+    top:60px;
+    right:80px;
+    width:120px;
+    height:120px;
+    background:radial-gradient(circle,#fff,#ddd,transparent);
+    border-radius:50%;
+    box-shadow:0 0 80px white;
+}
+
+/* Stars */
+.star{
+    position:fixed;
+    width:2px;
+    height:2px;
+    background:white;
+    animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:0.3;}
+    to{opacity:1;}
+}
+
+h1{
+    font-family:'Great Vibes',cursive;
+    font-size:55px;
+    margin-top:120px;
+}
+
+/* Envelope */
+.envelope{
+    width:300px;
+    height:200px;
+    background:#c9ada7;
+    margin:40px auto;
+    position:relative;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.flap{
+    position:absolute;
+    width:0;
+    height:0;
+    border-left:150px solid transparent;
+    border-right:150px solid transparent;
+    border-bottom:100px solid #9a8c98;
+    top:-100px;
+    left:0;
+    transform-origin:top;
+    transition:transform 1s ease;
+}
+
+.letter{
+    width:260px;
+    height:160px;
+    background:white;
+    color:black;
+    position:absolute;
+    top:20px;
+    left:20px;
+    padding:15px;
+    box-sizing:border-box;
+    transform:translateY(100%);
+    transition:transform 1s ease;
+    font-size:14px;
+    overflow:auto;
+}
+
+.open .flap{
+    transform:rotateX(180deg);
+}
+
+.open .letter{
+    transform:translateY(-60%);
+}
+
+/* Buttons */
+button{
+    padding:12px 25px;
+    margin:15px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yesBtn{background:#ff4d6d;color:white;}
+.noBtn{background:gray;color:white;}
+
+button:hover{transform:scale(1.1);}
+
+/* Petals */
+.petal{
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{transform:translateY(100vh);}
+}
+
+/* Fireworks */
+.firework{
+    position:fixed;
+    width:8px;
+    height:8px;
+    background:gold;
+    border-radius:50%;
+    animation:explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+    to{transform:scale(18);opacity:0;}
+}
+
+.fade-in{
+    opacity:0;
+    animation:fadeIn 2s forwards;
+}
+
+@keyframes fadeIn{
+    to{opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="moon"></div>
+
+<h1 class="fade-in">My Dearest Zunera Amber 🤍</h1>
+
+<div class="envelope" onclick="openLetter(this)">
+    <div class="flap"></div>
+    <div class="letter">
+        Zunera, you are light in my world full darkness. <br><br>
+        I cannot imagine a world without you. <br><br>
+        I love you and I will love you always. <br><br>
+        With love, <br>
+        Your husband, <br>
+        Mohammed Junaith 🤍
+    </div>
+</div>
+
+<button class="yesBtn" onclick="qubool()">Qubool Hai 🤍</button>
+<button class="noBtn" onclick="alert('Mujhe yaqeen hai aapka jawab sirf Qubool Hai hi hoga 🤍')">Think Again</button>
+
+<audio id="tasbeeh" src="tasbeeh.mp3"></audio>
+<audio id="nasheed" src="nasheed.mp3" loop autoplay></audio>
+
+<script>
+
+/* Stars */
+for(let i=0;i<120;i++){
+    let star=document.createElement("div");
+    star.className="star";
+    star.style.top=Math.random()*100+"vh";
+    star.style.left=Math.random()*100+"vw";
+    star.style.animationDuration=(Math.random()*2+1)+"s";
+    document.body.appendChild(star);
+}
+
+/* Envelope Open */
+function openLetter(el){
+    el.classList.toggle("open");
+}
+
+/* Petals */
+function createPetal(){
+    let petal=document.createElement("div");
+    petal.className="petal";
+    petal.innerHTML="🌹";
+    petal.style.left=Math.random()*100+"vw";
+    petal.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(petal);
+    setTimeout(()=>petal.remove(),5000);
+}
+setInterval(createPetal,300);
+
+/* Qubool Function */
+function qubool(){
+    document.getElementById("tasbeeh").play();
+
+    for(let i=0;i<30;i++){
+        let fire=document.createElement("div");
+        fire.className="firework";
+        fire.style.top=Math.random()*100+"vh";
+        fire.style.left=Math.random()*100+"vw";
+        document.body.appendChild(fire);
+        setTimeout(()=>fire.remove(),1000);
+    }
+
+    alert("Alhamdulillah 🤍 Qubool Hai 🤍 May Allah bless our Nikah forever.");
+}
+
+</script>
+
+</body>
+</html>
